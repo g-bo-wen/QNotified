@@ -18,64 +18,43 @@
  */
 package nil.nadph.qnotified.activity;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.os.Looper;
-import android.view.View;
-import android.view.ViewGroup;
+import android.annotation.*;
+import android.app.*;
+import android.content.*;
+import android.content.res.*;
+import android.graphics.*;
+import android.os.*;
+import android.view.*;
 import android.widget.*;
 
-import androidx.core.text.HtmlCompat;
-import androidx.core.view.ViewCompat;
+import androidx.core.text.*;
+import androidx.core.view.*;
 
-import com.rymmmmm.hook.RemoveMiniProgramAd;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import com.rymmmmm.hook.*;
+import com.tencent.mobileqq.widget.*;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
-import me.ketal.activity.ModifyLeftSwipeReplyActivity;
-import me.ketal.hook.LeftSwipeReplyHook;
-import me.ketal.hook.MultiActionHook;
-import me.ketal.hook.SortAtPanel;
-import me.kyuubiran.hook.AutoMosaicName;
-import me.kyuubiran.hook.ShowSelfMsgByLeft;
-import me.singleneuron.activity.ChangeDrawerWidthActivity;
+import me.ketal.activity.*;
+import me.ketal.hook.*;
+import me.kyuubiran.hook.*;
+import me.nextalone.hook.*;
+import me.singleneuron.activity.*;
 import me.singleneuron.hook.*;
-import me.singleneuron.hook.decorator.DisableQzoneSlideCamera;
-import me.singleneuron.hook.decorator.SimpleReceiptMessage;
-import me.singleneuron.qn_kernel.data.HostInformationProviderKt;
-import me.singleneuron.util.KotlinUtilsKt;
-import nil.nadph.qnotified.ExfriendManager;
-import nil.nadph.qnotified.MainHook;
-import nil.nadph.qnotified.R;
-import nil.nadph.qnotified.config.ConfigItems;
-import nil.nadph.qnotified.config.ConfigManager;
-import nil.nadph.qnotified.dialog.RepeaterIconSettingDialog;
-import nil.nadph.qnotified.dialog.RikkaDialog;
+import me.singleneuron.hook.decorator.*;
+import me.singleneuron.qn_kernel.data.*;
+import me.singleneuron.util.*;
+import nil.nadph.qnotified.*;
+import nil.nadph.qnotified.config.*;
+import nil.nadph.qnotified.dialog.*;
 import nil.nadph.qnotified.hook.*;
-import nil.nadph.qnotified.util.Initiator;
-import nil.nadph.qnotified.ui.CustomDialog;
-import nil.nadph.qnotified.ui.HighContrastBorder;
-import nil.nadph.qnotified.ui.ResUtils;
-import nil.nadph.qnotified.util.LicenseStatus;
-import nil.nadph.qnotified.util.NewsHelper;
-import nil.nadph.qnotified.util.Toasts;
-import nil.nadph.qnotified.util.UpdateCheck;
-import nil.nadph.qnotified.util.Utils;
+import nil.nadph.qnotified.ui.*;
+import nil.nadph.qnotified.util.*;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-import static androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY;
-import static me.singleneuron.util.KotlinUtilsKt.addViewConditionally;
-import static me.singleneuron.util.QQVersion.QQ_8_2_0;
-import static me.singleneuron.util.QQVersion.QQ_8_2_6;
+import static android.view.ViewGroup.LayoutParams.*;
+import static androidx.core.text.HtmlCompat.*;
+import static me.singleneuron.util.KotlinUtilsKt.*;
+import static me.singleneuron.util.QQVersion.*;
 import static nil.nadph.qnotified.ui.ViewBuilder.*;
 import static nil.nadph.qnotified.util.Utils.*;
 
@@ -214,6 +193,7 @@ public class SettingsActivity extends IphoneTitleBarActivityCompat implements Ru
         ll.addView(newListItemButton(this, "修改侧滑边距", "感谢祈无，支持8.4.1及更高，重启后生效", "", clickToProxyActAction(ChangeDrawerWidthActivity.class)));
         ll.addView(newListItemHookSwitchInit(this, "屏蔽QQ空间滑动相机", null, DisableQzoneSlideCamera.INSTANCE));
         ll.addView(newListItemHookSwitchInit(this, "回执消息文本化", null, SimpleReceiptMessage.INSTANCE));
+        ll.addView(newListItemHookSwitchInit(this, "精简气泡长按菜单", null, SimplifyChatLongItem.INSTANCE));
         ll.addView(newListItemHookSwitchInit(this, "批量撤回消息", "多选消息后撤回", MultiActionHook.INSTANCE));
         if (LeftSwipeReplyHook.INSTANCE.isValid()) {
             ll.addView(newListItemButton(this, "修改消息左滑动作", "", null, clickToProxyActAction(ModifyLeftSwipeReplyActivity.class)));
