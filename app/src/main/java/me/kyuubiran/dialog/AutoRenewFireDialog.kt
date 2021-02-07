@@ -40,7 +40,7 @@ object AutoRenewFireDialog {
     private lateinit var binding: KyuubiranAutoRenewFireBinding
     var replyMsg: String = getExFriendCfg().getStringOrDefault(AutoRenewFireMgr.MESSAGE, "火")
 
-    fun shouMainDialog(ctx: Context) {
+    fun showMainDialog(ctx: Context) {
         binding = KyuubiranAutoRenewFireBinding.inflate(LayoutInflater.from(ctx))
         val enable = getExFriendCfg().getBooleanOrFalse(AutoRenewFireMgr.ENABLE)
         currentEnable = enable
